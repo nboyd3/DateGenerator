@@ -36,15 +36,26 @@ def index():
     if request.method == 'POST':
         user_state = request.form['state']
         user_city = request.form['city']
-        user_activities = []
-        pick = rand_restaurants(user_city, user_state)
+        activities = []
+        
         if request.form.get("restaurants"):
-            user_activities.append(rand_restaurants(user_city, user_state))
+            activities.append("restaurants")
         if request.form.get("indoors"):
-            user_activities.append(rand_outdoor())
+            activities.append("indoors")
         if request.form.get("outdoors"):
-            user_activities.append(rand_indoor())
-        return render_template('index.html', pick = user_activities[random.randint(0, len(user_activities) - 1)])
+            activities.append("outdoors")
+
+        choice = random.choice(activities)
+
+        if choice == "restaurants":
+            pick = rand_restaurants(user_city, user_state)
+            return render_template('index.html', pick = pick)
+        elif choice == "indoors":
+            pick = rand_indoor()
+            return render_template('index.html', pick = pick)
+        elif choice == "outdoors":
+            pick = rand_outdoor()
+            return render_template('index.html', pick = pick)
 
     else:
         return render_template('index.html')
