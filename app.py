@@ -21,27 +21,29 @@ def rand_outdoor(city, state):
     outdoor = ["Go for a hike", "Throw a ball", "Skydiving would be fun", "Go on a bike ride", "Find a carnival", "Watch a concert", 
             "Watch an outdoor sporting event", "Stargaze until you see a shooting star", "Do a photoshoot", "Make a picnic",
             "Go horseback riding", "Take a hot air balloon ride", "Go fising", "Search for a bouquet of flowers", "Go roller blading"]
-    URL = 'https://www.yelp.com/search?find_desc=Outdoor%20Activities&find_loc=' + city + '%2C%20' + state
+
+            
+    URL = 'https://www.yelp.com/search?find_desc=outdoor&find_loc=' + city + '%2C%20' + state
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
     rest_names = soup.find_all('a', class_='link__09f24__1MGLa link-color--inherit__09f24__3Cplm link-size--inherit__09f24__3Javq')
     for rest_name in rest_names:
         for child in rest_name.descendants:
-            outdoor.append("Go explore " + child)
-    return str(outdoor[random.randint(0, len(outdoor) - 1)]) + "!"
+            outdoor.append("Go to " + child)
+    return str(outdoor[random.randint(0, len(outdoor) - 6)]) + "!"
 
 def rand_indoor(city, state):
     indoor = ["Read a book at a bookstore", "Complete a puzzle", "Go to a bowling alley", "Watch a movie", "Visit an arcade",
             "Visit an art gallery","Go thrift shopping", "Play a board game", "Take dance lessons", "Go for some wine tasting", 
             "Escape an escape room", ]
-    URL = 'https://www.yelp.com/search?find_desc=indoor%20activities&find_loc=' + city + '%2C%20' + state
+    URL = 'https://www.yelp.com/search?find_desc=indoor&find_loc=' + city + '%2C%20' + state
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
     rest_names = soup.find_all('a', class_='link__09f24__1MGLa link-color--inherit__09f24__3Cplm link-size--inherit__09f24__3Javq')
     for rest_name in rest_names:
         for child in rest_name.descendants:
-            indoor.append("Take a trip to " + child)
-    return str(indoor[random.randint(0, len(indoor) - 1)]) + "!"
+            indoor.append("Go to " + child)
+    return str(indoor[random.randint(0, len(indoor) - 6)]) + "!"
 
 app = Flask(__name__)
 
