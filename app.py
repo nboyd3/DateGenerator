@@ -24,7 +24,7 @@ def rand_outdoor():
     return outdoor[random.randint(0, len(outdoor) - 1)] + "!"
 
 def rand_indoor():
-    indoor = ["Read a book at a bookstore", "Make a puzzle", "Go to a bowling alley", "Watch a movie", "Visit an arcade",
+    indoor = ["Read a book at a bookstore", "Complete a puzzle", "Go to a bowling alley", "Watch a movie", "Visit an arcade",
             "Visit an art gallery","Go thrift shopping", "Play a board game", "Take dance lessons", "Go for some wine tasting", 
             "Escape an escape room", ]
     return indoor[random.randint(0, len(indoor) - 1)] + "!"
@@ -37,7 +37,7 @@ def index():
         user_state = request.form['state']
         user_city = request.form['city']
         activities = []
-        
+
         if request.form.get("restaurants"):
             activities.append("restaurants")
         if request.form.get("indoors"):
