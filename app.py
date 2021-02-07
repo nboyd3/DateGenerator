@@ -23,7 +23,7 @@ def rand_outdoor(city, state):
             "Go horseback riding", "Take a hot air balloon ride", "Go fising", "Search for a bouquet of flowers", "Go roller blading"]
 
             
-    URL = 'https://www.yelp.com/search?find_desc=outdoor&find_loc=' + city + '%2C%20' + state
+    URL = 'https://www.yelp.com/search?cflt=active&find_loc=' + city + '%2C ' + state
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
     rest_names = soup.find_all('a', class_='link__09f24__1MGLa link-color--inherit__09f24__3Cplm link-size--inherit__09f24__3Javq')
@@ -36,7 +36,7 @@ def rand_indoor(city, state):
     indoor = ["Read a book at a bookstore", "Complete a puzzle", "Go to a bowling alley", "Watch a movie", "Visit an arcade",
             "Visit an art gallery","Go thrift shopping", "Play a board game", "Take dance lessons", "Go for some wine tasting", 
             "Escape an escape room", ]
-    URL = 'https://www.yelp.com/search?find_desc=indoor&find_loc=' + city + '%2C%20' + state
+    URL = 'https://www.yelp.com/search?find_desc=beauty%20%26%20spas&find_loc=' + city + '%2C ' + state
     page = requests.get(URL)
     soup = BeautifulSoup(page.content, 'html.parser')
     rest_names = soup.find_all('a', class_='link__09f24__1MGLa link-color--inherit__09f24__3Cplm link-size--inherit__09f24__3Javq')
