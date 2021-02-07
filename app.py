@@ -54,6 +54,14 @@ def index():
         user_city = request.form['city']
         activities = []
 
+        if len(user_state) == 0 or len(user_city) == 0:
+            pick = "Input Error: Please enter a loacation"
+            return render_template('index.html', pick = pick)
+        
+        if not request.form.get("restaurants") and not request.form.get("indoors") and not request.form.get("outdoors"):
+            pick = "Input Error: Please check an option"
+            return render_template('index.html', pick = pick)
+
         if request.form.get("restaurants"):
             activities.append("restaurants")
         if request.form.get("indoors"):
