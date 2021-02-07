@@ -10,7 +10,9 @@ def index():
         pick = random.choice(dates)
         user_state = request.form['state']
         user_city = request.form['city']
-        if user_state == "NY" and user_city == "Bing":
+        restaurant = request.form.getlist('restaurant')
+        if user_state == "NY" and request.form.get("outdoors"):
+            
             return render_template('index.html', pick="Tullys")
         else:
             return render_template('index.html', pick=pick)

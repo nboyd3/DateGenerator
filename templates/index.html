@@ -59,6 +59,15 @@
                 <input type="text" name="state" id="state"><br>
                 <label for="city"> <h4>Enter City:</h4> </label><br>
                 <input type="text" name="city" id="city"><br>
+                <input type="checkbox" name="restaurants" value="restaurants" checked> Restaurants
+                </label>
+                <label class="checkbox-inline">
+                <input type="checkbox" name="indoors" value="indoors" checked> Indoors
+                </label>
+                <label class="checkbox-inline">
+                <input type="checkbox" name="outdoors" value="outdoors" checked> Outdoors
+                </label>
+                <br>
                 <button type="submit" class="btn btn-lightgrey"> <h4>Find Date<h4> </button>
             </form>
         </div>
@@ -67,6 +76,10 @@
       <div class="row">
           <h3>Date Idea:</h3>
           <h1>{{ pick }}</h1>
+      </div>
+
+      <div class="row">
+          <p>Instructions: Hackurdate is a tool to help people decide on a date they may not normally go on. To use, enter your state abbreviation and city, then press find date.</p>
       </div>
 
     </div>
